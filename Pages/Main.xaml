@@ -1,0 +1,58 @@
+﻿<Page x:Class="MoneyInEveryPocket.Pages.Main"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:MoneyInEveryPocket.Pages"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="Главная страница" Background="White">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition />
+            <ColumnDefinition />
+            <ColumnDefinition />
+        </Grid.ColumnDefinitions>
+        <Border BorderBrush="Black" BorderThickness="1" Margin="75,100,25,100" Grid.Column="0">
+            <Canvas Background="#FFDEEBF7">
+                <Label FontSize="20" HorizontalContentAlignment="Center" Content="Стабильный" Width="165" Canvas.Top="20" />
+                <Label FontSize="12" HorizontalContentAlignment="Center" Content="Без пополнения" Canvas.Top="70" Width="165" />
+                <Label FontSize="12" HorizontalContentAlignment="Center" Content="Без снятия" Width="165" Canvas.Top="90" />
+                <Label FontSize="12" HorizontalContentAlignment="Center" Content="Без капитализации" Width="165" Canvas.Top="110" />
+                <Label FontSize="12" HorizontalContentAlignment="Center" Content="Минимальный срок" Width="165" Canvas.Top="140" />
+                <Label FontSize="12" HorizontalContentAlignment="Center" Content="от 3 месяцев" Width="165" Canvas.Top="156" />
+                <Label FontSize="28" HorizontalContentAlignment="Center" Content="8%" Width="72" Canvas.Top="176" FontWeight="Bold" Foreground="#FF002060" />
+                <Label FontSize="20" HorizontalContentAlignment="Center" Content="годовых" Width="122" Canvas.Left="40" Canvas.Top="185" FontWeight="Bold" Foreground="#FF002060" />
+            </Canvas>
+        </Border>
+        <Border BorderBrush="Black" BorderThickness="1" Margin="50,100,50,100" Grid.Column="1">
+            <Canvas Background="#FFDEEBF7">
+                <Label FontSize="20" Margin="0,20,0,0" HorizontalContentAlignment="Center" Content="Оптимальный" Width="162" />
+                <Label FontSize="12" Margin="0,70,0,0" HorizontalContentAlignment="Center" Content="Пополняемый" Width="162" />
+                <Label FontSize="12" Margin="0,90,0,0" HorizontalContentAlignment="Center" Content="Есть возможность снятия" Width="162" />
+                <Label FontSize="12" Margin="0,110,0,0" HorizontalContentAlignment="Center" Content="с капитализацией" Width="162" />
+                <Label FontSize="12" Margin="0,140,0,0" HorizontalContentAlignment="Center" Content="Минимальный срок" Width="162" />
+                <Label FontSize="12" Margin="0,156,0,0" HorizontalContentAlignment="Center" Content="от 6 месяцев" Width="162" />
+                <Label FontSize="28" HorizontalContentAlignment="Center" Content="5%" Width="72" Canvas.Top="176" FontWeight="Bold" Foreground="#FF002060" />
+                <Label FontSize="20" HorizontalContentAlignment="Center" Content="годовых" Width="122" Canvas.Left="40" Canvas.Top="185" FontWeight="Bold" Foreground="#FF002060" />
+            </Canvas>
+        </Border>
+        <Border BorderBrush="Black" BorderThickness="1" Margin="25,100,75,100" Grid.Column="2">
+            <Canvas Background="#FFDEEBF7">
+                <Label FontSize="20" Margin="0,20,0,0" HorizontalContentAlignment="Center" Content="Стандарт" Width="162" />
+                <Label FontSize="12" Margin="0,70,0,0" HorizontalContentAlignment="Center" Content="Пополняемый" Width="162" />
+                <Label FontSize="12" Margin="0,90,0,0" HorizontalContentAlignment="Center" Content="Без снятия" Width="162" />
+                <Label FontSize="12" Margin="0,110,0,0" HorizontalContentAlignment="Center" Content="Без капитализации" Width="162" />
+                <Label FontSize="12" Margin="0,140,0,0" HorizontalContentAlignment="Center" Content="Минимальный срок" Width="162" />
+                <Label FontSize="12" Margin="0,156,0,0" HorizontalContentAlignment="Center" Content="от 3 месяцев" Width="162" />
+                <Label FontSize="28" HorizontalContentAlignment="Center" Content="6%" Width="72" Canvas.Top="176" FontWeight="Bold" Foreground="#FF002060" />
+                <Label FontSize="20" HorizontalContentAlignment="Center" Content="годовых" Width="122" Canvas.Left="40" Canvas.Top="185" FontWeight="Bold" Foreground="#FF002060" />
+            </Canvas>
+        </Border>
+        <Image Source="Images/logo.png" Grid.Column="1" Height="39" VerticalAlignment="Top" Margin="0,10,10,0" Grid.ColumnSpan="2" HorizontalAlignment="Right" Width="295" />
+        <Button Background="#FF2C7DE0" Content="Рассчитать доход" FontSize="24" Foreground="White" Margin="0,0,0,30" Grid.Column="1" Height="40" VerticalAlignment="Bottom" Click="Button_Click" />
+    </Grid>
+</Page>

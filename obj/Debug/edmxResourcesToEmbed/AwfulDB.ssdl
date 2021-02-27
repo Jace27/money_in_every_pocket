@@ -1,0 +1,149 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="Хранилище MoneyInEveryPocketModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="BankAccount">
+    <Key>
+      <PropertyRef Name="NumberAccount" />
+    </Key>
+    <Property Name="NumberAccount" Type="float" Nullable="false" />
+    <Property Name="UserID" Type="float" />
+    <Property Name="DateOpen" Type="datetime" />
+    <Property Name="Balance" Type="nvarchar" MaxLength="255" />
+    <Property Name="TypeID" Type="float" />
+  </EntityType>
+  <EntityType Name="Contract">
+    <Key>
+      <PropertyRef Name="IDContract" />
+    </Key>
+    <Property Name="IDContract" Type="float" Nullable="false" />
+    <Property Name="Account" Type="float" />
+    <Property Name="UserID" Type="float" />
+    <Property Name="Amount" Type="float" />
+    <Property Name="Period" Type="float" />
+    <Property Name="ExpirationDate" Type="datetime" />
+    <Property Name="Percet" Type="float" />
+  </EntityType>
+  <EntityType Name="History">
+    <Key>
+      <PropertyRef Name="IDOperation" />
+    </Key>
+    <Property Name="IDOperation" Type="float" Nullable="false" />
+    <Property Name="NameOperation" Type="nvarchar" MaxLength="255" />
+    <Property Name="DateTime" Type="datetime" />
+    <Property Name="Amount" Type="float" />
+    <Property Name="NumberAccount" Type="float" />
+  </EntityType>
+  <EntityType Name="Type">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="float" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="255" />
+  </EntityType>
+  <EntityType Name="User">
+    <Key>
+      <PropertyRef Name="IDUser" />
+    </Key>
+    <Property Name="IDUser" Type="float" Nullable="false" />
+    <Property Name="Login" Type="float" />
+    <Property Name="Password" Type="nvarchar" MaxLength="255" />
+    <Property Name="Name" Type="nvarchar" MaxLength="255" />
+    <Property Name="Surname" Type="nvarchar" MaxLength="255" />
+    <Property Name="Patronymic" Type="nvarchar" MaxLength="255" />
+    <Property Name="Series" Type="float" />
+    <Property Name="Number" Type="float" />
+    <Property Name="Phone" Type="float" />
+    <Property Name="Adress" Type="nvarchar" MaxLength="255" />
+    <Property Name="E-Mail" Type="nvarchar" MaxLength="255" />
+    <Property Name="DateOfIssue" Type="datetime" />
+    <Property Name="Issued" Type="nvarchar" MaxLength="255" />
+    <Property Name="DateOfBirth" Type="datetime" />
+    <Property Name="PlaceOfBirth" Type="nvarchar" MaxLength="255" />
+  </EntityType>
+  <Association Name="FK_BankAccount_Type">
+    <End Role="Type" Type="Self.Type" Multiplicity="0..1" />
+    <End Role="BankAccount" Type="Self.BankAccount" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Type">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="BankAccount">
+        <PropertyRef Name="TypeID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_BankAccount_User">
+    <End Role="User" Type="Self.User" Multiplicity="0..1" />
+    <End Role="BankAccount" Type="Self.BankAccount" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="IDUser" />
+      </Principal>
+      <Dependent Role="BankAccount">
+        <PropertyRef Name="UserID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Contract_BankAccount">
+    <End Role="BankAccount" Type="Self.BankAccount" Multiplicity="0..1" />
+    <End Role="Contract" Type="Self.Contract" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="BankAccount">
+        <PropertyRef Name="NumberAccount" />
+      </Principal>
+      <Dependent Role="Contract">
+        <PropertyRef Name="Account" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Contract_User">
+    <End Role="User" Type="Self.User" Multiplicity="0..1" />
+    <End Role="Contract" Type="Self.Contract" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="IDUser" />
+      </Principal>
+      <Dependent Role="Contract">
+        <PropertyRef Name="UserID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_History_BankAccount">
+    <End Role="BankAccount" Type="Self.BankAccount" Multiplicity="0..1" />
+    <End Role="History" Type="Self.History" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="BankAccount">
+        <PropertyRef Name="NumberAccount" />
+      </Principal>
+      <Dependent Role="History">
+        <PropertyRef Name="NumberAccount" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="Хранилище MoneyInEveryPocketModelContainer">
+    <EntitySet Name="BankAccount" EntityType="Self.BankAccount" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Contract" EntityType="Self.Contract" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="History" EntityType="Self.History" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Type" EntityType="Self.Type" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="User" EntityType="Self.User" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_BankAccount_Type" Association="Self.FK_BankAccount_Type">
+      <End Role="Type" EntitySet="Type" />
+      <End Role="BankAccount" EntitySet="BankAccount" />
+    </AssociationSet>
+    <AssociationSet Name="FK_BankAccount_User" Association="Self.FK_BankAccount_User">
+      <End Role="User" EntitySet="User" />
+      <End Role="BankAccount" EntitySet="BankAccount" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Contract_BankAccount" Association="Self.FK_Contract_BankAccount">
+      <End Role="BankAccount" EntitySet="BankAccount" />
+      <End Role="Contract" EntitySet="Contract" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Contract_User" Association="Self.FK_Contract_User">
+      <End Role="User" EntitySet="User" />
+      <End Role="Contract" EntitySet="Contract" />
+    </AssociationSet>
+    <AssociationSet Name="FK_History_BankAccount" Association="Self.FK_History_BankAccount">
+      <End Role="BankAccount" EntitySet="BankAccount" />
+      <End Role="History" EntitySet="History" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>
